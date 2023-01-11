@@ -76,6 +76,18 @@ REMOVED option applicationSet.args.debug - Use applicationSet.logLevel: debug
 {{- if .Values.applicationSet.args.enableLeaderElection }}
 REMOVED option applicationSet.args.enableLeaderElection - Value determined based on replicas
 {{- end }}
+{{- if .Values.applicationSet.logFormat }}
+DEPRECATED option applicationSet.logFormat - Use configs.params.applicationsetcontroller.log.format
+{{- end }}
+{{- if .Values.applicationSet.logLevel }}
+DEPRECATED option applicationSet.logLevel - Use configs.params.applicationsetcontroller.log.level
+{{- end }}
+{{- if .Values.applicationSet.args.policy }}
+DEPRECATED option applicationSet.args.policy - Use configs.params.applicationsetcontroller.policy
+{{- end }}
+{{- if .Values.applicationSet.args.dryRun }}
+DEPRECATED option applicationSet.args.dryRun - Use configs.params.applicationsetcontroller.dryRun
+{{- end }}
 
 In order to access the server UI you have the following options:
 
