@@ -37,7 +37,9 @@ jobs:
 
       - name: Create index file
         run: |
-          helm repo index --merge index.yaml .
+          helm repo index \
+          --url https://raw.githubusercontent.com/PrashantRaj18198/argo-helm/custom-chart/ \
+          --merge index.yaml .
 
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v12
