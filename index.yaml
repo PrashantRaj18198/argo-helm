@@ -6,7 +6,7 @@ entries:
         - "[Changed]: Upgrade Argo CD to 2.6.0"
     apiVersion: v2
     appVersion: v2.6.0-rc3
-    created: "2023-01-23T19:31:32.701748594Z"
+    created: "2023-01-23T19:46:14.281791663Z"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -14,7 +14,7 @@ entries:
       version: 4.22.4
     description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
       tool for Kubernetes.
-    digest: ffbe8d2edbb23a49053bb86abfe27d1e8c7e43902e287426ffa1baf066c6915d
+    digest: f5a9b2ecfa4546fcae0019fd0762d955dd4264af1196a35f35fbafabc2abb512
     home: https://github.com/argoproj/argo-helm
     icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
     keywords:
@@ -30,6 +30,6 @@ entries:
     - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
     - https://github.com/argoproj/argo-cd
     urls:
-    - dist/argo-cd-5.18.0-preview.tgz
+    - https://raw.githubusercontent.com/PrashantRaj18198/argo-helm/custom-chart/dist/argo-cd-5.18.0-preview.tgz
     version: 5.18.0-preview
-generated: "2023-01-23T19:31:32.686704666Z"
+generated: "2023-01-23T19:46:14.268047549Z"
