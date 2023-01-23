@@ -2,5 +2,5 @@ output
 .vscode
 .DS_Store
 .idea
-**/charts/*/charts
+# **/charts/*/charts
 bin
