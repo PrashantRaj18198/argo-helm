@@ -1,0 +1,56 @@
+name: Helm
+on:
+  push:
+    branches:
+      - "custom-chart"
+
+jobs:
+  publish:
+    env:
+      CHART_BASE_VERSION: 5.18.0
+      HELM_VERSION: v3.8.0
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chart Checkout
+        uses: actions/checkout@v3
+
+      - name: Git login
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Helm Installation
+        uses: azure/setup-helm@v3
+        with:
+          version: ${{ env.HELM_VERSION }}
+
+      - name: Update helm deps
+        run: |
+          cd charts/argo-cd
+          helm dependency update
+
+      - name: Helm Package
+        run: |
+          helm package charts/argo-cd \
+            --version "${{ env.CHART_BASE_VERSION }}-preview" \
+            -d dist
+
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@v12
+        id: verify-changed-files
+        with:
+          files: |
+            dist/*.tgz
+
+      - name: Commit changes
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: |
+          git add dist/*.tgz
+          git commit -m "chore: regenerated charts"
+
+      - name: Push changes
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ github.token }}
+          branch: ${{ github.ref }}
