@@ -32,7 +32,7 @@ jobs:
       - name: Helm Package
         run: |
           helm package charts/argo-cd \
-            --version "${{ env.CHART_BASE_VERSION }}-preview" \
+            --version "${{ env.CHART_BASE_VERSION }}+preview" \
             -d dist
 
       - name: Create index file
